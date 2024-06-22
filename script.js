@@ -12,7 +12,11 @@ function toggleContactInfo() {
 
 
 //footer toggle ends
-function showContent(id) {
+
+
+//nav starts line 17
+    //nav-home starts 
+        function showContent(id) {
             var sections = document.querySelectorAll('.content');
             sections.forEach(function(section) {
                 section.classList.remove('active');
@@ -23,6 +27,71 @@ function showContent(id) {
         document.addEventListener('DOMContentLoaded', function() {
             showContent('home'); // Display home section by default
         });
+        
+       //nav- home ends  
+       
+       //nav-bubu starts 
+        function showContent(id) {
+            var sections = document.querySelectorAll('.content');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showContent('buba'); // Display  buba section by default
+        });
+        
+       //nav- bubu ends  
+       //nav-tiro starts 
+        function showContent(id) {
+            var sections = document.querySelectorAll('.content');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showContent('tiro'); // Display  buba section by default
+        });
+        
+       //nav- tiro ends  
+       
+       //nav-shuku starts 
+        function showContent(id) {
+            var sections = document.querySelectorAll('.content');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showContent('shuku'); // Display  buba section by default
+        });
+        
+       //nav-shuku  ends  
+       //nav-lace starts 
+        function showContent(id) {
+            var sections = document.querySelectorAll('.content');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showContent('lace'); // Display  buba section by default
+        });
+        
+       //nav-lace  ends  
+        //nav ends line 90
+
+
+
+// read more button starts
 
         var readMoreButtons = document.querySelectorAll('.read-more-btn');
         readMoreButtons.forEach(function(button) {
@@ -39,6 +108,10 @@ function showContent(id) {
             });
         });
 
+
+
+// read more button stops
+// crm modal starts
         function openCrmModal(action) {
             var crmOverlay = document.getElementById('crm-overlay');
             var crmModalTitle = document.getElementById('crm-modal-title');
@@ -82,7 +155,7 @@ function showContent(id) {
             closeNewStudentForm();
         }
         
-        
+        //crm modal stops here
         
         // currency starts
 function adminFunction() {
