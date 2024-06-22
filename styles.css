@@ -168,3 +168,10 @@ body {
 }
 
 // for students ends
+// for class content to control other nav fron showing starts
+            .content hidden {
+            display: none;
+            }
+//for class content to control other nav fron showing stop
+                        
+            }
