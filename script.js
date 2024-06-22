@@ -1,4 +1,17 @@
+//footer toggle starts
+function toggleContactInfo() {
+    const contactInfo = document.getElementById('contact-info');
+    if (contactInfo.classList.contains('hidden')) {
+        contactInfo.classList.remove('hidden');
+    } else {
+        contactInfo.classList.add('hidden');
+    }
+}
 
+
+
+
+//footer toggle ends
 function showContent(id) {
             var sections = document.querySelectorAll('.content');
             sections.forEach(function(section) {
