@@ -25,7 +25,7 @@
     <!--- main starts ----->
     <main>
         <!--- home 1 starts ----->
-        <div id="home" class="content active">
+        <div id="home" class="content">
             <div class="outer-inner">
                 <div class="inner">
                     <h2>Welcome!</h2>
@@ -68,10 +68,8 @@
 <button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Closing</button>
 <button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">View Records</button>
 <button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Read Announcement</button>
-      
-                </div>
-            </div>
-            <div class="crm-overlay" id="crm-overlay">
+                    <!---- copy and pasted crm-overlay here, it was after thr closing inner and outter div----->
+      <div class="crm-overlay" id="crm-overlay">
                 <div class="crm-container" id="crm-container">
                     <h2 id="crm-modal-title"></h2>
                     <input type="hidden" id="student-name" name="student-name">
@@ -82,7 +80,17 @@
                     <button onclick="registerAttendance()">Register</button>
                     <button onclick="closeCrmModal()">Close</button>
                 </div>
+      </div>
+
+<!---- copy and pasted crm-overlay here, it was after thr closing inner and outter div above this comment----->
+
+                    
+       <!--- inner and outer closing divs start here--->             
+                </div>
             </div>
+
+            <!--- inner and outer closing divs stops here--->             
+            
             <!-- New Student Form -->
             <div class="crm-overlay" id="new-student-form">
                 <div class="crm-container">
@@ -155,15 +163,16 @@
 <div><button onclick="window.location.href='https://qualifying-examination.onrender.com/'">Qualifying Examination</button></div>  
    
     <hr>
+    </div>
            <button class="read-more-btn" data-target="full-content-2">Read More</button>           
                
-       </div>                            </div>   
+                                   </div>   
      </div>
-        </div></div>
+        
             
             
             <!--- exams 4 ends ----->
-    </div>
+    
             <!--- contest 5 starts ----->
             <div class="outer-inner">
                 <div class="inner">
@@ -215,12 +224,11 @@
                 
                 </div>
 <! added for four divs here starts--->
-    </div>
-    </div>
     
+        </div>
                 
             <! added for four divs here stops--->
-    </div>
+
             <!--- contest 5 ends ----->
         
 
