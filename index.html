@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shullian Stitches & Couture</title>
 <link rel="stylesheet" href="styles.css">
-<!--- header starts ----->
+</head>
+<body>
+    <!--- header starts ----->
     <header>
         <div class="header-content">
-            <img src="/IMG-20240507-WA0153.jpg" alt="Logo" class="logo">
+            <img src="/storage/emulated/0/Pictures/WhatsApp/IMG-20240507-WA0153.jpg" alt="Logo" class="logo">
             <h1>Shullian Stitches & Couture</h1>
         </div>
         <nav>
@@ -59,124 +55,114 @@
             <!--- students 3 starts ----->
             <div class="outer-inner">
                 <div class="inner">
-                
-                 <div class="container">   
-                    <h2>Students</h2>
-<p>Manage new and old students efficiently.</p>
-<button onclick="window.location.href='https://shullian-contest-reg.onrender.com'">New Students</button>
-<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Arrival</button>
-<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Leave</button>
-<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Return</button>
-<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Closing</button>
-<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">View Records</button>
-<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Read Announcement</button>
-                    <!---- copy and pasted crm-overlay here, it was after thr closing inner and outter div----->
-      <div class="crm-overlay" id="crm-overlay">
-                <div class="crm-container" id="crm-container">
-                    <h2 id="crm-modal-title"></h2>
-                    <input type="hidden" id="student-name" name="student-name">
-                    <label for="time">Time:</label>
-                    <input type="time" id="time" name="time" required>
-                    <label for="reason">Reason:</label>
-                    <textarea id="reason" name="reason"></textarea>
-                    <button onclick="registerAttendance()">Register</button>
-                    <button onclick="closeCrmModal()">Close</button>
-                </div>
-      </div>
+                    <div class="container">
+        <h1>Attendance Register</h1>
+        
+        </form>
+        
+        <form id="attendanceForm" 
+class="form-section">
+	
 
-<!---- copy and pasted crm-overlay here, it was after thr closing inner and outter div above this comment----->
+            <label for="time">Time:</label>
+            <input type="time" id="time" required>
+            <label for="reason">Reason:</label>
+            <input type="text" id="reason">
+            <button type="button" onclick="registerAttendance()">Register Arrival</button>
+        </form>
+        
+        <form id="leaveForm" class="form-section" style="display: none;">
+            <label for="leaveTime">Leave Time:</label>
+            <input type="time" id="leaveTime" required>
+            <label for="leaveReason">Reason:</label>
+            <input type="text" id="leaveReason">
+            <button type="button" onclick="recordLeave()">Submit Leave</button>
+        </form>
+        
+        <form id="returnForm" class="form-section" style="display: none;">
+            <label for="returnTime">Return Time:</label>
+            <input type="time" id="returnTime" required>
+            <label for="returnReason">Reason:</label>
+            <input type="text" id="returnReason">
+            <button type="button" onclick="recordReturn()">Submit Return</button>
+        </form>
+        
+        <form id="closingForm" class="form-section" style="display: none;">
+            <label for="closingTime">Closing Time:</label>
+            <input type="time" id="closingTime" required>
+            <label for="closingReason">Reason:</label>
+            <input type="text" id="closingReason">
+            <button type="button" onclick="recordClosing()">Submit Closing</button>
+        </form>
+        
+        <div class="form-section">
+            <button type="button" onclick="showLeaveForm()">Record Leave</button>
+            <button type="button" onclick="showReturnForm()">Record Return</button>
+            <button type="button" onclick="showClosingForm()">Record Closing</button>
+            <button type="button" onclick="showRecordBlock()">View Records</button>
+        </div>
+        
+        <div id="recordBlock">
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+            <button type="button" onclick="viewRecords()">Submit</button>
+            <pre id="records"></pre>
+            <h2>Registered Workers:</h2>
+            <pre id="workerList"></pre>
+            <button type="button" class="announcement-button" onclick="makeAnnouncement()">Make Announcement</button>
+            <textarea id="announcement" style="width: 100%; height: 50px; display: none;"></textarea>
+            <button type="button" class="announcement-button" onclick="submitAnnouncement()" style="display: none;">Submit Announcement</button>
+            <h2>Announcements:</h2>
+            <pre id="announcements"></pre>
+        </div>
+    </div>
 
-                    
-       <!--- inner and outer closing divs start here--->             
-                </div>
-            </div>
-
-            <!--- inner and outer closing divs stops here--->             
-            
-            <!-- New Student Form -->
-            <div class="crm-overlay" id="new-student-form">
-                <div class="crm-container">
-                    <h2>New Student Registration</h2>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" placeholder="Enter 11-digit phone number" required>
-                    <label for="address">Address:</label>
-                    <textarea id="address" name="address" rows="4" required></textarea>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="receipt">Upload Payment Receipt:</label>
-                    <input type="file" id="receipt" name="receipt" accept="image/*" required>
-                    <label for="account-name">Account Name:</label>
-                    <input type="text" id="account-name" name="account-name" required>
-                    <label for="bank">Bank:</label>
-                    <input type="text" id="bank" name="bank" required>
-                    <label for="proof-of-identity">Upload Proof of Identity:</label>
-                    <input type="file" id="proof-of-identity" name="proof-of-identity" accept="image/*" required>
-                    <button onclick="submitNewStudentForm()">Submit</button>
-                    <button onclick="closeNewStudentForm()">Close</button>
-                    </div>
-            </div>
                 </div>
             </div>
             <!--- students 3 ends ----->
             <!--- exams 4 starts ----->
             <div class="outer-inner">
                 <div class="inner">
-                    <div id="short-content-2">
-
-                    <h2>General Test for New Entrant  to the College</h2>
-    <div><p>As a policy of this great college, we conduct some general test on intending candidate, as we only want the best for the college. it is a yard stick to you getting selected, so put in your very best. Notes are also provided for you to glamce at, if you so wish to use them. They are found just below, Thank you</p></div>
-       <div><button onclick="window.location.href='https://exams-b433.onrender.com/'">Entry Test</button>
+                	
+                    <h2>Exams</h2>
+                    <h1>Scheme of Work</h1>
+               <div id="short-content-2">
+     <div class="scheme-of-work">
+                        <div class="week">
+                            <h2>Week 1: Basics of Illustration</h2>
+                            <p>Introduction to materials and tools, Basic shapes and forms, Understanding light and shadow, Perspective drawing basics.</p>
+                        </div>
+                        <div class="week">
+                            <h2>Week 2: Intermediate Illustration</h2>
+                            <p>Advanced perspective techniques, Introduction to figure drawing, Drawing from reference, Basic composition techniques.</p>
+                        </div>
+                        
+                        </div>
+                        
+        <div id="full-content-2" class="hidden">                
+                        <div class="week">
+                            <h2>Week 3: Advanced Illustration</h2>
+                            <p>Advanced figure drawing, Dynamic composition techniques, Working with color and texture, Creating a complete illustration.</p>
+                        </div>
+                        <div class="week">
+                            <h2>Week 4: Digital Illustration</h2>
+                            <p>Introduction to digital illustration tools, Digital painting techniques, Working with layers and masks, Creating digital illustrations from start to finish.</p>
+                        </div>
+                        <div class="week">
+                            <h2>Week 5: Project Week</h2>
+                            <p>Students work on their final project, applying the techniques and skills learned throughout the course.</p>
+                        </div>
+                        <div class="week">
+                            <h2>Week 6: Presentation and Critique</h2>
+                            <p>Students present their final projects, Peer and instructor critique, Discussion of techniques and concepts used in the projects.</p>
+                        </div>
+                        
+                        </div>
+             <button class="read-more-btn" data-target="full-content-2">Read More</button>           
                     </div>
-                    </div>  
-
-
-
-                    
-                <hr>
-
-
-
-<div id="full-content-2" class="hidden">
-                    
-                    <h2>General Notes for New Entrant  to the College</h2>
-                    <div><button onclick="window.location.href='https://contestants-registration-form.onrender.com/'">Entry Notes for New Entrants</button></div> 
-            
-       
-                                
-             
-                    <h2>Scheme of Work</h2>
-      <div><p>This is a walk through of what likely you will be experiencing during the training and also bases of your test taking and exams. So follow it meticulously.</p></div>         
-                            <div><button onclick="window.location.href='https://contestants-registration-form.onrender.com/'">Scheme of work</button></div>        
-          <hr>    
-
-          <h2>Students Notes</h2>
-                    <div><p>Below is a comprehensive notes to guide you in the test, and exams you will be embacking during your journey in learning. Schedule yourself poperly to glance through them. Thank you</p></div>
-            <div><button onclick="window.location.href='https://contestants-registration-form.onrender.com/'">Notes</button></div>        
-          <hr>              
-
-                    
-                    <h2>Continuous Assessment Test</h2>
-                    <div><p>Weekly a short test will be conducted, as training also imcludes the training of the mind. Each weeks results forms the bases of a cumulative GPA. So don't mess up with this test</p></div>
-<div><button onclick="window.location.href='https://exams-b433.onrender.com/'">Continuous Assessment Test</button></div>
-                    <hr>
-                    
-    <h2>Qualifying Examination</h2>
-     <div><p> You getting certified rest solemnly on you passing the qualifying examination. Success as you climb to this stage of your endeavors.</p></div               
-<div><button onclick="window.location.href='https://qualifying-examination.onrender.com/'">Qualifying Examination</button></div>  
-   
-    <hr>
-    </div>
-           <button class="read-more-btn" data-target="full-content-2">Read More</button>           
-               
-                                   </div>   
-     </div>
-    </div>
-            
-            
+                </div>
+            </div>
             <!--- exams 4 ends ----->
-    
             <!--- contest 5 starts ----->
             <div class="outer-inner">
                 <div class="inner">
@@ -200,123 +186,399 @@
                         <li>3rd Prize: Sewing Supplies kits</li>
                     </ul>
                     <p>Don't miss this opportunity to showcase your talent and creativity!</p>
-
-           <section class="venue">
-            <h2>Venue</h2>
-            <p>Location: Art Gallery, 13 Opeloyeru Street, Ikotun-Egbe, Lagos</p>
-            <p>Date: January 1st, 2025</p>
-        </section>
-
-        <section class="booking">
-            <h2>Booking Information</h2>
-        </section>
-
-        <section class="ticket-fees">
-            <h2>Ticket Fees</h2>
-            <p>Early Bird: ₦2,250 (until December 15th, 2024)</p>
-            <p>Regular: ₦5,750</p>
-            <p>VIP: ₦16,000</p>
-        </section>     
-
-                
-        <button onclick="window.location.href='https://contestants-registration-form.onrender.com/'">Register</button>
-    </div>
-
-    
+                    <button onclick="enterContest()">Enter Contest</button>
+                    </div>
                     <button class="read-more-btn" data-target="full-content-3">Read More</button> 
                 </div>
-            </div>
-                </div>
-    </div>
-<! added for four divs here starts--->
-    
-    
                 
-            <! added for four divs here stops--->
-
+                </div>
+                
+            </div>
             <!--- contest 5 ends ----->
-        
+        </div>
 
         <!--- Buba section starts ----->
-        <div id="buba" class="content hidden">
+        <div id="buba" class="content">
             <div class="outer-inner">
                 <div class="inner">
-                    <h2>Buba Collection2024</h2>
+                	<div id="short-content-4">
+                    <h2>Buba Collection</h2>
                     <p>Discover our exquisite collection of Buba, a traditional Nigerian attire that blends elegance and culture. Each piece is crafted with attention to detail, ensuring you stand out at any occasion.</p>
-                    <p>Our Buba designs are perfect for weddings, parties, and other special events. Explore our collection and find the perfect outfit that reflects your unique style.</p>
+                </div>
+<div id="full-content-4" class="hidden">   
+    <p>Our Buba designs are perfect for weddings, parties, and other special events. Explore our collection and find the perfect outfit that reflects your unique style.</p>
                     <p>Shop now and experience the beauty of Nigerian fashion with our exclusive Buba collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-4">Read More</button> 
                 </div>
             </div>
-        </div>
-        <!--- Buba section ends ----->
-        <!--- Tiro section starts ----->
-        <div id="tiro" class="content hidden">
+            
             <div class="outer-inner">
                 <div class="inner">
+                	<div id="short-content-5">
+                    <h2>Buba Collection</h2>
+                    <p>Discover our exquisite collection of Buba, a traditional Nigerian attire that blends elegance and culture. Each piece is crafted with attention to detail, ensuring you stand out at any occasion.</p>
+                </div>
+<div id="full-content-5" class="hidden">   
+    <p>Our Buba designs are perfect for weddings, parties, and other special events. Explore our collection and find the perfect outfit that reflects your unique style.</p>
+                    <p>Shop now and experience the beauty of Nigerian fashion with our exclusive Buba collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-5">Read More</button> 
+                </div>
+            </div>
+            
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-6">
+                    <h2>Buba Collection</h2>
+                    <p>Discover our exquisite collection of Buba, a traditional Nigerian attire that blends elegance and culture. Each piece is crafted with attention to detail, ensuring you stand out at any occasion.</p>
+                </div>
+<div id="full-content-6" class="hidden">   
+    <p>Our Buba designs are perfect for weddings, parties, and other special events. Explore our collection and find the perfect outfit that reflects your unique style.</p>
+                    <p>Shop now and experience the beauty of Nigerian fashion with our exclusive Buba collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-6">Read More</button> 
+                </div>
+            </div>
+            
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-7">
+                    <h2>Buba Collection</h2>
+                    <p>Discover our exquisite collection of Buba, a traditional Nigerian attire that blends elegance and culture. Each piece is crafted with attention to detail, ensuring you stand out at any occasion.</p>
+                </div>
+<div id="full-content-7" class="hidden">   
+    <p>Our Buba designs are perfect for weddings, parties, and other special events. Explore our collection and find the perfect outfit that reflects your unique style.</p>
+                    <p>Shop now and experience the beauty of Nigerian fashion with our exclusive Buba collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-7">Read More</button> 
+                </div>
+            </div>
+            
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-8">
+                    <h2>Buba Collection</h2>
+                    <p>Discover our exquisite collection of Buba, a traditional Nigerian attire that blends elegance and culture. Each piece is crafted with attention to detail, ensuring you stand out at any occasion.</p>
+                </div>
+<div id="full-content-8" class="hidden">   
+    <p>Our Buba designs are perfect for weddings, parties, and other special events. Explore our collection and find the perfect outfit that reflects your unique style.</p>
+                    <p>Shop now and experience the beauty of Nigerian fashion with our exclusive Buba collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-8">Read More</button> 
+                </div>
+            </div>
+            
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-9">
+                    <h2>Buba Collection</h2>
+                    <p>Discover our exquisite collection of Buba, a traditional Nigerian attire that blends elegance and culture. Each piece is crafted with attention to detail, ensuring you stand out at any occasion.</p>
+                </div>
+<div id="full-content-9" class="hidden">   
+    <p>Our Buba designs are perfect for weddings, parties, and other special events. Explore our collection and find the perfect outfit that reflects your unique style.</p>
+                    <p>Shop now and experience the beauty of Nigerian fashion with our exclusive Buba collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-9">Read More</button> 
+                </div>
+            </div>
+            
+            
+            
+            <!---buba closing div starts-->
+        </div>
+        <!---buba closing div stops-->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--- Buba section ends ----->
+        	
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--- Tiro section starts ----->
+        <div id="tiro" class="content">
+                <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-10">
                     <h2>Tiro Designs</h2>
                     <p>Our Tiro designs bring a modern twist to traditional Nigerian fashion. With vibrant colors and intricate patterns, our Tiro outfits are designed to make a statement.</p>
-                    <p>Whether you're attending a cultural event or looking for a unique outfit for a special occasion, our Tiro designs are the perfect choice. Browse our collection and find the perfect Tiro outfit that suits your style.</p>
+                </div>
+<div id="full-content-10" class="hidden">   
+    <p>Whether you're attending a cultural event or looking for a unique outfit for a special occasion, our Tiro designs are the perfect choice. Browse our collection and find the perfect Tiro outfit that suits your style.</p>
                     <p>Experience the fusion of tradition and modernity with our Tiro designs.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-10">Read More</button> 
                 </div>
             </div>
-        </div>
+            
+                
+                             <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-11">
+                    <h2>Tiro Designs</h2>
+                    <p>Our Tiro designs bring a modern twist to traditional Nigerian fashion. With vibrant colors and intricate patterns, our Tiro outfits are designed to make a statement.</p>
+                </div>
+<div id="full-content-11" class="hidden">   
+    <p>Whether you're attending a cultural event or looking for a unique outfit for a special occasion, our Tiro designs are the perfect choice. Browse our collection and find the perfect Tiro outfit that suits your style.</p>
+                    <p>Experience the fusion of tradition and modernity with our Tiro designs.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-11">Read More</button> 
+                </div>
+            </div>
+            
+                             <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-12">
+                    <h2>Tiro Designs</h2>
+                    <p>Our Tiro designs bring a modern twist to traditional Nigerian fashion. With vibrant colors and intricate patterns, our Tiro outfits are designed to make a statement.</p>
+                </div>
+<div id="full-content-12" class="hidden">   
+    <p>Whether you're attending a cultural event or looking for a unique outfit for a special occasion, our Tiro designs are the perfect choice. Browse our collection and find the perfect Tiro outfit that suits your style.</p>
+                    <p>Experience the fusion of tradition and modernity with our Tiro designs.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-12">Read More</button> 
+                </div>
+            </div>
+            
+                     <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-13">
+                    <h2>Tiro Designs</h2>
+                    <p>Our Tiro designs bring a modern twist to traditional Nigerian fashion. With vibrant colors and intricate patterns, our Tiro outfits are designed to make a statement.</p>
+                </div>
+<div id="full-content-13" class="hidden">   
+    <p>Whether you're attending a cultural event or looking for a unique outfit for a special occasion, our Tiro designs are the perfect choice. Browse our collection and find the perfect Tiro outfit that suits your style.</p>
+                    <p>Experience the fusion of tradition and modernity with our Tiro designs.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-13">Read More</button> 
+                </div>
+            </div>
+            
+                        
+                           <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-14">
+                    <h2>Tiro Designs</h2>
+                    <p>Our Tiro designs bring a modern twist to traditional Nigerian fashion. With vibrant colors and intricate patterns, our Tiro outfits are designed to make a statement.</p>
+                </div>
+<div id="full-content-14" class="hidden">   
+    <p>Whether you're attending a cultural event or looking for a unique outfit for a special occasion, our Tiro designs are the perfect choice. Browse our collection and find the perfect Tiro outfit that suits your style.</p>
+                    <p>Experience the fusion of tradition and modernity with our Tiro designs.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-14">Read More</button> 
+                </div>
+            </div>
+            
+                  
+                
+   
+                
+                
+                <!---tiro closing div starts-->
+            </div>
+            <!---tiro closing div stops-->
+            
+            
+        
+        
+        
+        
+        
         <!--- Tiro section ends ----->
+        	
+        
         <!--- Shuku section starts ----->
-        <div id="shuku" class="content hidden">
+        <div id="shuku" class="content">
             <div class="outer-inner">
                 <div class="inner">
+                	<div id="short-content-15">
                     <h2>Shuku Styles</h2>
                     <p>Explore our range of Shuku styles, inspired by traditional Nigerian fashion. Each piece is designed to showcase the rich cultural heritage while incorporating contemporary elements.</p>
+                    </div>
+       <div id="full-content-15" class="hidden">                
                     <p>From casual wear to formal attire, our Shuku styles are versatile and suitable for any occasion. Find the perfect Shuku outfit that reflects your personality and style.</p>
                     <p>Step into the world of Nigerian fashion with our exclusive Shuku styles.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-15">Read More</button> 
                 </div>
             </div>
-        </div>
-        <!--- Shuku section ends ----->
-        <!--- Lace section starts ----->
-        <div id="lace" class="content hidden">
+            
+            
             <div class="outer-inner">
                 <div class="inner">
-                    <h2>Lace Designs</h2>
-                    <p>Discover our luxurious lace designs, perfect for adding a touch of elegance to any outfit. Our lace collection features intricate patterns and high-quality materials, making each piece a work of art.</p>
-                    <p>Whether you're looking for a lace dress, blouse, or accessory, our collection has something for everyone. Elevate your wardrobe with our exquisite lace designs and make a statement wherever you go.</p>
-                    <p>Indulge in the beauty of lace with our exclusive collection.</p>
+                	<div id="short-content-16">
+                    <h2>Shuku Styles</h2>
+                    <p>Explore our range of Shuku styles, inspired by traditional Nigerian fashion. Each piece is designed to showcase the rich cultural heritage while incorporating contemporary elements.</p>
+                    </div>
+       <div id="full-content-16" class="hidden">                
+                    <p>From casual wear to formal attire, our Shuku styles are versatile and suitable for any occasion. Find the perfect Shuku outfit that reflects your personality and style.</p>
+                    <p>Step into the world of Nigerian fashion with our exclusive Shuku styles.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-16">Read More</button> 
                 </div>
             </div>
-        </div>
+            
+            
+          <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-17">
+                    <h2>Shuku Styles</h2>
+                    <p>Explore our range of Shuku styles, inspired by traditional Nigerian fashion. Each piece is designed to showcase the rich cultural heritage while incorporating contemporary elements.</p>
+                    </div>
+       <div id="full-content-17" class="hidden">                
+                    <p>From casual wear to formal attire, our Shuku styles are versatile and suitable for any occasion. Find the perfect Shuku outfit that reflects your personality and style.</p>
+                    <p>Step into the world of Nigerian fashion with our exclusive Shuku styles.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-17">Read More</button> 
+                </div>
+            </div>
+              
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-18">
+                    <h2>Shuku Styles</h2>
+                    <p>Explore our range of Shuku styles, inspired by traditional Nigerian fashion. Each piece is designed to showcase the rich cultural heritage while incorporating contemporary elements.</p>
+                    </div>
+       <div id="full-content-18" class="hidden">                
+                    <p>From casual wear to formal attire, our Shuku styles are versatile and suitable for any occasion. Find the perfect Shuku outfit that reflects your personality and style.</p>
+                    <p>Step into the world of Nigerian fashion with our exclusive Shuku styles.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-18">Read More</button> 
+                </div>
+            </div>
+            
+     <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-19">
+                    <h2>Shuku Styles</h2>
+                    <p>Explore our range of Shuku styles, inspired by traditional Nigerian fashion. Each piece is designed to showcase the rich cultural heritage while incorporating contemporary elements.</p>
+                    </div>
+       <div id="full-content-19" class="hidden">                
+                    <p>From casual wear to formal attire, our Shuku styles are versatile and suitable for any occasion. Find the perfect Shuku outfit that reflects your personality and style.</p>
+                    <p>Step into the world of Nigerian fashion with our exclusive Shuku styles.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-19">Read More</button> 
+                </div>
+            </div>
+                         
+                  
+                  
+                  
+            
+ <!---shuku closing div starts-->
+            </div>
+            <!--- shuku closing div stops-->
+        
+        
+        
+        <!--- Shuku section ends ----->
+        	
+        
+        
+        <!--- Lace section starts ----->
+        <div id="lace" class="content">
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-20">
+                    <h2>Lace Designs</h2>
+                    <p>Discover our luxurious lace designs, perfect for adding a touch of elegance to any outfit. Our lace collection features intricate patterns and high-quality materials, making each piece a work of art.</p>
+                    </div>
+                    <div id="full-content-20" class="hidden">             
+                    <p>Whether you're looking for a lace dress, blouse, or accessory, our collection has something for everyone. Elevate your wardrobe with our exquisite lace designs and make a statement wherever you go.</p>
+                    <p>Indulge in the beauty of lace with our exclusive collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-20">Read More</button> 
+                </div>
+            </div>
+            
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-21">
+                    <h2>Lace Designs</h2>
+                    <p>Discover our luxurious lace designs, perfect for adding a touch of elegance to any outfit. Our lace collection features intricate patterns and high-quality materials, making each piece a work of art.</p>
+                    </div>
+                    <div id="full-content-21" class="hidden">             
+                    <p>Whether you're looking for a lace dress, blouse, or accessory, our collection has something for everyone. Elevate your wardrobe with our exquisite lace designs and make a statement wherever you go.</p>
+                    <p>Indulge in the beauty of lace with our exclusive collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-21">Read More</button> 
+                </div>
+            </div>
+            
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-22">
+                    <h2>Lace Designs</h2>
+                    <p>Discover our luxurious lace designs, perfect for adding a touch of elegance to any outfit. Our lace collection features intricate patterns and high-quality materials, making each piece a work of art.</p>
+                    </div>
+                    <div id="full-content-22" class="hidden">             
+                    <p>Whether you're looking for a lace dress, blouse, or accessory, our collection has something for everyone. Elevate your wardrobe with our exquisite lace designs and make a statement wherever you go.</p>
+                    <p>Indulge in the beauty of lace with our exclusive collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-22">Read More</button> 
+                </div>
+            </div>
+            
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-23">
+                    <h2>Lace Designs</h2>
+                    <p>Discover our luxurious lace designs, perfect for adding a touch of elegance to any outfit. Our lace collection features intricate patterns and high-quality materials, making each piece a work of art.</p>
+                    </div>
+                    <div id="full-content-23" class="hidden">             
+                    <p>Whether you're looking for a lace dress, blouse, or accessory, our collection has something for everyone. Elevate your wardrobe with our exquisite lace designs and make a statement wherever you go.</p>
+                    <p>Indulge in the beauty of lace with our exclusive collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-23">Read More</button> 
+                </div>
+            </div>
+            
+            <div class="outer-inner">
+                <div class="inner">
+                	<div id="short-content-24">
+                    <h2>Lace Designs</h2>
+                    <p>Discover our luxurious lace designs, perfect for adding a touch of elegance to any outfit. Our lace collection features intricate patterns and high-quality materials, making each piece a work of art.</p>
+                    </div>
+                    <div id="full-content-24" class="hidden">             
+                    <p>Whether you're looking for a lace dress, blouse, or accessory, our collection has something for everyone. Elevate your wardrobe with our exquisite lace designs and make a statement wherever you go.</p>
+                    <p>Indulge in the beauty of lace with our exclusive collection.</p>
+                    </div>
+                    <button class="read-more-btn" data-target="full-content-24">Read More</button> 
+                </div>
+            </div>
+            
+        <!---lace closing div starts-->
+            </div>
+            <!--- lace closing div stops-->
+        
+        
+        
         <!--- Lace section ends ----->
     </main>
     <!--- main ends ----->
     <!--- footer starts ----->
-
-<footer>
-
-    <button onclick="toggleContactInfo()">Show More</button>
-        
-    
-        <div id="contact-info" class="hidden">
-
-       <p>Contact Information</p>
-         <div><button onclick="location.href='https://aaaartbasay-pt-at.onrender.com'">Admin Login</button></div>     
-            <p>Phone: 123-456-7890</p>
-            <p>Email: info@shullianstitches.com</p>
-            <br>
-            <p>&copy; 2023 Shullian Stitches & Couture. All rights reserved.</p>
-            <br>
-            	<hr>
-            <div><p class="powered-by"><span class="drop-cap">P</span>owered by Emperorstateman</p>
-<p>Phone: +234 704 578 6155</p>
-<p><sub>&copy 2024 </p></div>
-        </div>
-        
+    <footer>
+        <p>&copy; 2023 Shullian Stitches & Couture. All rights reserved.</p>
     </footer>
-
-
-
-    
-    
     <!--- footer ends ----->
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
