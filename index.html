@@ -62,9 +62,68 @@
             <div class="outer-inner">
                 <div class="inner">
                     <div class="container">
-        <h1>Attendance Register</h1>
+
+
+
+			    
+
+        <h2>Students</h2>
+<p>Manage new and old students efficiently.</p>
+<button onclick="window.location.href='https://shullian-contest-reg.onrender.com'">New Students</button>
+<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Arrival</button>
+<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Leave</button>
+<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Return</button>
+<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Record Closing</button>
+<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">View Records</button>
+<button onclick="window.location.href='https://attendance-register-4io6.onrender.com/'">Read Announcement</button>
+                    <!---- copy and pasted crm-overlay here, it was after thr closing inner and outter div----->
+      <div class="crm-overlay" id="crm-overlay">
+                <div class="crm-container" id="crm-container">
+                    <h2 id="crm-modal-title"></h2>
+                    <input type="hidden" id="student-name" name="student-name">
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required>
+                    <label for="reason">Reason:</label>
+                    <textarea id="reason" name="reason"></textarea>
+                    <button onclick="registerAttendance()">Register</button>
+                    <button onclick="closeCrmModal()">Close</button>
+                </div>
+      </div>
+
+<!---- copy and pasted crm-overlay here, it was after thr closing inner and outter div above this comment----->
+
+                    
+       <!--- inner and outer closing divs start here--->             
+                
         
-        </form>
+
+            <!--- inner and outer closing divs stops here--->             
+            
+            <!-- New Student Form -->
+            <div class="crm-overlay" id="new-student-form">
+                <div class="crm-container">
+                    <h2>New Student Registration</h2>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" placeholder="Enter 11-digit phone number" required>
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" rows="4" required></textarea>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="receipt">Upload Payment Receipt:</label>
+                    <input type="file" id="receipt" name="receipt" accept="image/*" required>
+                    <label for="account-name">Account Name:</label>
+                    <input type="text" id="account-name" name="account-name" required>
+                    <label for="bank">Bank:</label>
+                    <input type="text" id="bank" name="bank" required>
+                    <label for="proof-of-identity">Upload Proof of Identity:</label>
+                    <input type="file" id="proof-of-identity" name="proof-of-identity" accept="image/*" required>
+                    <button onclick="submitNewStudentForm()">Submit</button>
+                    <button onclick="closeNewStudentForm()">Close</button>
+                    </div>
+	</div>
+
         
         <form id="attendanceForm" 
 class="form-section">
@@ -121,6 +180,9 @@ class="form-section">
             <h2>Announcements:</h2>
             <pre id="announcements"></pre>
         </div>
+
+
+			    
     </div>
 
                 </div>
