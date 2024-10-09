@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewing & Fashion E-commerce</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #353;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Logo Styling */
+        header img {
+            width: 50px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        /* Header Title */
+        header .title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 20px;
+        }
+
+        header .business-name {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        header .trademark {
+            font-size: 12px;
+            position: relative;
+            top: -10px;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        h2, h3 {
+            background-color: #3633;
+            color: black;
+            padding: 5px;
+            text-align: center;
+        }
+
+        p {
+            background-color: #36f3;
+            color: black;
+            font-size: 15px;
+            padding: 5px;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            display: flex;
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+
+        .item {
+            display: inline-block;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .item img {
+            width: 200px;
+            height: auto;
+        }
+
+        /* Cart Styles */
+        #cart {
+            padding: 20px;
+        }
+
+        #cart-items {
+            list-style-type: none;
+        }
+
+        #cart-items li {
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 5px;
+        }
+
+        /* Apprenticeship Form Styles */
+        form {
+            padding: 20px;
+            background-color: #f4f4f4;
+            max-width: 500px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #353;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        trademark {
+        	right: 0;
+        
+        }
+        
+        
+        #timer {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: red;
+}
+
+
+
+#start-btn, #submit-btn, #checkout-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+#thank-you-message {
+    font-size: 18px;
+    color: green;
+}
+
+#submit-btn {
+    display: none;
+}
+
+#checkout-form {
+    margin-top: 20px;
+}
+
+
+        
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <!-- Logo -->
+        <img src="/storage/emulated/0/Download/IMG-20240507-WA0153.jpg" alt="Business Logo">
+
+        <!-- Business Name with Trademark -->
+        <div class="title-container">
+            <span class="business-name">Shullian Stitches & Couture&trade;</span>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#cart">Shopping Cart</a></li>
+            <li><a href="#apprenticeship">Apprenticeship</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h3>Shullian Stitches & Couture – Where Fashion Meets Your Taste.</h3>
+        <p>**Discover Your Perfect Fit with Shullian Stitches & Couture**.</p><br>
+        <p>At Shullian Stitches, we don’t just create clothes – we craft confidence. Our designs are tailored to complement your unique style and body type, ensuring you always look and feel your best. </p> <br>
+        <p>Experience the artistry and precision of our bespoke pieces firsthand, and let us bring your fashion vision to life. Your perfect fit awaits at Shullian Stitches & Couture – where style meets craftsmanship. </p>
+    </section>
+
+
+
+
+
+    <!-- Gallery Section with Photo Grid -->
+    <section id="gallery">
+        <h3>Shullian Stitches & Couture – Elevating Your Fashion Style</h3>
+        <div class="gallery-grid">
+            <div class="item">
+                <img src="/storage/emulated/0/Download/member-9 (2).png" alt="Style 1">
+                <p>Style Name: Dress A</p>
+                <p>Price: ₦37,500</p>
+                <button onclick="addToCart('Dress A', 37500)">Add to Cart</button>
+                <input type="number" value="1" id="quantity-DressA" min="1" onchange="updateCartQuantity('Dress A', 37500, this.value)">
+            </div>
+            <div class="item">
+                <img src="/storage/emulated/0/Download/member-6 (2).png" alt="Style 2">
+                <p>Style Name: Dress B</p>
+                <p>Price: ₦40,000</p>
+                <button onclick="addToCart('Dress B', 40000)">Add to Cart</button>
+                <input type="number" value="1" id="quantity-DressB" min="1" onchange="updateCartQuantity('Dress B', 40000, this.value)">
+            </div>
+            <!-- Add more items as necessary -->
+            	
+            <div class="item">
+                <img src="/storage/emulated/0/Download/member-4 (2).png" alt="Style 3">
+                <p>Style Name: Dress C</p>
+                <p>Price: ₦45,000</p>
+                <button onclick="addToCart('Dress C', 45000)">Add to Cart</button>
+                <input type="number" value="1" id="quantity-DressC" min="1" onchange="updateCartQuantity('Dress C', 45000, this.value)">
+            </div>
+            
+            <div class="item">
+                <img src="/storage/emulated/0/Download/image_1.jpg" alt="Style 4">
+                <p>Style Name: Dress D</p>
+                <p>Price: ₦30,000</p>
+                <button onclick="addToCart('Dress D', 30000)">Add to Cart</button>
+                <input type="number" value="1" id="quantity-DressD" min="1" onchange="updateCartQuantity('Dress D', 30000, this.value)">
+            </div>
+            
+            <div class="item">
+                <img src="/storage/emulated/0/Download/auccesful agent.jpeg" width="60px"alt="Style 5">
+                <p>Style Name: Dress E</p>
+                <p>Price: ₦50,000</p>
+                <button onclick="addToCart('Dress E', 50000)">Add to Cart</button>
+                <input type="number" value="1" id="quantity-DressE" min="1" onchange="updateCartQuantity('Dress E', 50000, this.value)">
+            </div>
+            
+            
+        </div>
+    </section>
+
+    <!-- Shopping Cart Section -->
+    <section id="cart">
+        <h3>Your Style, Your Cart – Shullian Stitches & Couture</h3>
+        <ul id="cart-items">
+            <!-- Dynamically filled by JavaScript -->
+        </ul>
+        <p id="total-price">Total Price: ₦0</p>
+        <button id="checkout-btn" onclick="showCheckoutForm()">Checkout</button>
+    </section>
+
+    <!-- Checkout Form Section -->
+    <section id="checkout-form" style="display: none;">
+        <h2>Checkout Form</h2>
+        <form id="checkout-form-details" action="https://formspree.io/f/mdkonlgl" method="POST">
+            <input type="hidden" name="_subject" value="Shopping Cart Checkout Form Submission">
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" name="full-name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required><br>
+            	<label for="address">Shipping Address:</label>
+            <input type="text" id="address" name="address" required><br>
+
+            <div id="checkout-items"></div>
+
+            <p>Total Amount: <input type="text" id="total-amount" value="₦0" readonly></p>
+
+            <button type="submit">Submit Checkout</button>
+        </form>
+    </section>
+
+    <!-- Apprenticeship Registration Section -->
+    <section id="apprenticeship">
+        <h3>Shullian Stitches & Couture Apprenticeship Program – Master the Art of Fashion</h3>
+        <form id="apprenticeship-form" action="https://formspree.io/f/mdkonlgl" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_subject" value="Apprenticeship Form Submission">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+<label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+            	
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required><br>
+
+            <label for="amount">Training Fee (Bank Transfer):</label>
+            <input type="text" id="amount" value="₦50,000" readonly name="training fee paid."><br>
+
+            <label for="bank-details">Bank Account Details:</label>
+            <p>Account Name: Shullian Stitches & Couture Fashion School<br>Account Number: 1234567890<br>Bank Name: First Bank</p>
+            <br>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </section>
+
+    <!-- Online Qualifying Test -->
+    <section id="test-section">
+        <h3>Shullian Stitches & Couture Qualifying Test – Prove Your Passion, Showcase Your Skill</h3>
+        <form id="test-form" action="https://formspree.io/f/mdkonlgl" method="POST">
+            <input type="hidden" name="_subject" value="Qualifying Test Submission">
+            <label for="apprentice-name">Full Name:</label>
+            <input type="text" id="apprentice-name" name="apprentice-name" required><br>
+            	<label for="apprentice-email">Email address:</label>
+            <input type="text" id="apprentice-email" name="apprentice-email" required><br>
+            	<label for="apprentice-phone-no">Mobile Phone Number:</label>
+            <input type="text" id="apprentice-phone-no" name="apprentice-phone-no" required><br>
+            	
+            
+            <div id="exam-section">
+        <h3>Take IQ Tests</h3>
+        <div id="timer">30:00</div>
+        <button id="start-btn" onclick="startTimer()">Start Test</button>
+            
+            
+            
+
+<label for="question-1">Question 1: What are the different types of fabrics?</label>
+<id="question-1" name="question-1" required>
+            <br>
+            <label for="apprentice-test-answer">Your Answers:</label>
+            <textarea id="apprentice-test-answer" name="apprentice-test-answer" required></textarea><br>
+            	
+            <button type="button" id="submit-btn" onclick="submitExam()">Submit Test</button>
+
+      
+        </form>
+        
+        <!-- Thank you message -->
+        <div id="thank-you-message" style="display:none;">
+            <h3>Thank you for submitting the exam!</h3>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2023 Shullian Stitches & Couture. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Shopping cart functionality
+let cart = [];
+
+function addToCart(itemName, itemPrice) {
+    cart.push({ name: itemName, price: itemPrice });
+    updateCartDisplay();
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);  // Remove item from the cart at the given index
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = '';
+    let totalPrice = 0;
+
+    cart.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name}: ₦${item.price}`;
+        
+        // Create a remove button
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.onclick = () => removeFromCart(index);  // Bind remove function to button
+
+        // Add item and remove button to the cart display
+        listItem.appendChild(removeButton);
+        cartItemsContainer.appendChild(listItem);
+        totalPrice += item.price;
+    });
+
+    document.getElementById('total-price').textContent = `Total Price: ₦${totalPrice}`;
+}
+
+function showCheckoutForm() {
+    const checkoutForm = document.getElementById('checkout-form');
+    checkoutForm.style.display = 'block';
+
+    const checkoutItemsContainer = document.getElementById('checkout-items');
+    checkoutItemsContainer.innerHTML = '';
+    cart.forEach(item => {
+        const listItem = document.createElement('input');
+        listItem.type = 'hidden';
+        listItem.name = `cart-item[]`;
+        listItem.value = `${item.name}: ₦${item.price}`;
+        checkoutItemsContainer.appendChild(listItem);
+    });
+
+    const totalAmountField = document.getElementById('total-amount');
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    totalAmountField.value = `₦${totalPrice}`;
+}
+
+// Timer for the exam
+let countdown;
+let timeLeft = 30 * 60;  // 30 minutes in seconds
+let timerRunning = false;
+
+function startTimer() {
+    if (!timerRunning) {
+        timerRunning = true;
+        document.getElementById('submit-btn').style.display = 'block'; // Show submit button when the timer starts
+        document.getElementById('start-btn').style.display = 'none';  // Hide start button
+        countdown = setInterval(updateTimer, 1000);  // Start countdown
+    }
+}
+
+function updateTimer() {
+    const timerElement = document.getElementById('timer');
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    // Display the time in minutes:seconds format
+    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+    if (timeLeft > 0) {
+        timeLeft--;  // Decrease time left by 1 second
+    } else {
+        clearInterval(countdown);
+        submitExam();  // Automatically submit the exam when the time runs out
+    }
+}
+
+function submitExam() {
+    if (countdown) {
+        clearInterval(countdown);  // Stop the timer
+    }
+
+    document.getElementById('test-form').submit();  // Submit the form via Formspree
+
+    document.getElementById('test-form').style.display = 'none';  // Hide the exam form
+    document.getElementById('thank-you-message').style.display = 'block';  // Show thank you message
+
+    console.log("IQ tests submitted.");
+}
+
+
+    </script>
+</body>
+</html>
+
+
